@@ -1,0 +1,113 @@
+
+\subsection{Introducción}
+En la era digital actual, los sistemas de información se enfrentan a una constante amenaza a su integridad y seguridad, lo que hace imperiosa la implementación de mecanismos para la recolección, almacenamiento y verificación de eventos críticos. Los logs de seguridad juegan un papel importante, pero su gestión tradicional presenta desventajas, como la manipulación, falsificación y pérdida de registros, sobre todo si se almacenan en servidores centralizados ~\cite{birk2011forensics}.
+
+Para responder a estos retos, la tecnología blockchain surge como una nueva alternativa para permitir una infraestructura funcional y descentralizada, una estructura que es transparente y resistente a la manipulación. La blockchain, que apareció inicialmente como la tecnología que dio lugar a Bitcoin ~\cite{nakamoto2008bitcoin}, ha evolucionado para abarcar áreas como la ciberseguridad, gracias a propiedades como la inmutabilidad, la distribución de confianza y la trazabilidad, respaldadas por funciones criptográficas como los hashes y estructuras de datos como los Merkle Trees~\cite{crosby2016blockchain,stallings2017crypto}.
+
+La incorporación de blockchain para gestionar logs de seguridad hace que no sólo aumente la integridad de los datos que se almacenan en ellos, sino que permite la posibilidad de auditar fácilmente los eventos que se registran lo que permite su verificación criptográfica sin necesidad de terceros. Además, el uso de algoritmos de consenso y mecanismos de validación distribuidos permite asegurar que los registros ya no pueden ser alterados una vez se encuentran en la cadena ~\cite{zheng2017overview}.
+
+Durante la evolución de la blockchain, se han ido produciendo distintas arquitecturas (públicas, privadas y de consorcio por citar sólo unas cuantas) que se adaptan a las particularidades de cada entorno y a los objetivos de entornos empresariales o institucionales ~\cite{christidis2016blockchains}. En este sentido, diseñar un sistema que combine los principios de la blockchain a las necesidades concretas de logs de seguridad es una buena oportunidad de mejorar grandemente la seguridad de nuestros procesos, así como la transparencia y la confianza en procesos de vigilancia y auditoría digital.
+
+El trabajo que se presenta tiene como objetivo el diseño y la implementación de un sistema de logs de seguridad basado en blockchain que garantice la integridad, la trazabilidad y la autenticidad de los logs de seguridad, siempre con un enfoque que permita la evaluación en términos de aplicabilidad. Esta tesis pretende colaborar al fortalecimiento de los mecanismos de defensa de infraestructuras críticas, incorporando los avances tecnológicos en la cuestión de los logs distribuidos.
+
+
+
+\subsection{Estado del arte}
+Es crucial confirmar la necesidad de revisión, según el requisito básico es la identificación de la problemática del proyecto. Por medio de este proceso se recogen las investigaciones existentes y, con este fin , se pone énfasis en aspectos importantes para el diseño e implementación de un sistema que garantice la integridad, trazabilidad y autenticidad de los logs de seguridad utilizando tecnología blockchain.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Los criterios de inclusión empleados para identificar estudios relacionados con la presente investigación son:
+\begin{itemize}
+    \item Trabajos relacionados con el uso de blockchain en el ámbito de la seguridad informática.
+    \item Investigaciones que aborden la gestión, integridad o trazabilidad de logs de seguridad.
+    \item Artículos que incluyan el uso de smart contracts o chaincode en su propuesta.
+    \item Publicaciones de los últimos 6 años (2019–2025).
+    \item Artículos disponibles en inglés.
+\end{itemize}
+
+Por otro lado, los criterios de exclusión establecidos son:
+\begin{itemize}
+    \item Investigaciones que no incluyan componentes relacionados con blockchain o seguridad de logs.
+    \item Trabajos que no presenten una metodología clara.
+    \item Artículos no disponibles en texto completo.
+\end{itemize}
+
+Para la búsqueda de toda la información relacionada con esta investigación, se revisaron documentos, artículos científicos y conferencias indexadas en bases de datos académicas como IEEE Xplore. La cadena de búsqueda empleada fue la siguiente:
+
+(security OR “information security” OR cybersecurity) AND (blockchain OR block-chain OR “distributed ledger technology”) AND (logs OR logfile OR “security events”) AND (integrity OR traceability OR authenticity OR immutability) AND (“smart contracts” OR chaincode)
+
+Al aplicar esta cadena de búsqueda en IEEE Xplore, se obtuvieron 14 resultados. De estos, se seleccionaron los artículos que cumplían con los criterios de inclusión y aportaban valor a la presente investigación, los cuales fueron 5 serán analizados a continuación.
+
+\subsubsection{Elaboración del estado del arte}
+
+\textbf{EP1.}  El artículo científico elaborado por~\cite{8804170}  titulado \textbf{“Smart Contract-Based Product Traceability System in the Supply Chain Scenario”}, presenta una solución innovadora que utiliza blockchain y smart contracts para asegurar la integridad, trazabilidad y autenticidad de los registros en una cadena de suministro.
+
+Este esquema de trabajo se hace funcionar implementando un procedimiento para ir registrando, de forma irreversible, el conjunto de cada evento y movimiento de un producto en un libro mayor distribuido. De este modo, las auditorías son completamente transparentes, la veracidad de la información no queda en entredicho.
+Los acuerdos inteligentes hacen los pasos por sí mismo y adeguran que las transacciones sean seguras, mientras que un aparato de identificación hace más fuerte la protección del sistema.
+
+También, todos los datos de los hechos del sistema están en la red cadena, lo que los salvaguarda de cambios y cuida su forma correcta. Esto deja hacer revisiones seguras desde cualquier máquina que pueda entrar a internet, al mismo tiempo que da un control claro de cada uno de los movimientos hechos.
+
+El grado de viabilidad de la propuesta quedó demostrado al aplicar el sistema de forma práctica con frameworks como Truffle, explicitando cómo implantarlo en redes locales. Ello pone de manifiesto el potencial que puede acoger la metodología de blockchain para operar con registros críticos en forma de datos, sirviendo de base para la elaboración de sistemas de confianza capaces de funcionar en distintas modalidades, muy en especial en la operación con logs de seguridad. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{EP2.}  El artículo científico elaborado por~\cite{sheng2023blockchain}  titulado \textbf{“Blockchain-Based Traceability for Teak Identity: A Transformational Approach”}, nos presenta una solución fascinante: usar la blockchain de Ethereum para asegurar la trazabilidad de la teca a lo largo de toda su cadena de suministro.
+
+En este estudio, los autores crearon e implementaron smart contracts en Solidity que son capaces de almacenar, de forma inmutable, todos los metadatos relacionados con el origen y el movimiento de la madera. ¿El resultado? La integridad y autenticidad de la información quedan totalmente garantizadas.
+
+Este método no solamente da vista en vivo y revisión rápida de información, pero también quita la necesidad de usar papeles. Esto, claro, baja muy fuerte el peligro de cambios o engaños en los registros. Ademñas, al probar la solución en redes de prueba como Rinkeby y Ropsten, los autores confirmaron que esta tecnología es viable ttno técnica como económicamente.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{EP3.}  El artículo científico elaborado por~\cite{Patel2024FuzzyEnhanced}  titulado \textbf{“Fuzzy-Enhanced Secure Messaging Framework for Smart Healthcare System”}.  El presente artículo nos revela una propuesta realmente innovadora: un sistema destinado a facilitar la compartición segura de datos en un entorno de salud inteligente con datos provenientes de la inteligencia artificial (IA), la lógica difusa y la tecnología blockchain. Pese a que se trata de datos médicos, la metodología es muy versátil y puede ser aplicada en cualquier ámbito donde la integridad y autenticidad de los datos  como por ejemplo, en los registros de seguridad importantes. 
+
+¿Cómo hace eso? La IA clasifica los datos para determinar si estos son maliciosos. Solo aquellos datos que no representan una amenaza son los que se guardan en la blockchain. Este filtrado previo es clave porque asegura que solo la información válida y confiable se registre de forma inmutable. La blockchain, por su parte, garantiza la integridad y la resistencia a cualquier manipulación gracias a herramientas como los Merkle Trees y las firmas digitales únicas.
+
+Para controlar quién puede ver qué, se usan smart contracts. Son como vigilantes digitales que chequean quien tiene permiso para mirar los datos, permitiendo solo a usuarios autorizados ver la información guardada. Este sistema de identificación y aprobación es muy útil en los logs de seguridad, donde cuidar el acceso a estos registros es tan clave como asegurar que su info no sea cambiada. 
+
+A pesar de que la investigación que aquí se presenta no toma los logs de red o de sistema como objeto de estudio, sí que deja una carga de ideas muy potentes con respecto a la importancia de preproceso de la información antes del registro y la propia idea de cómo los smart contracts pueden ser  una potente herramienta para una buena gestión del acceso a datos sensibles de forma verificada y segura.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{EP4.}  El artículo científico elaborado por~\cite{MorilloReina2025Decentralized}  titulado \textbf{“Decentralized and Secure Blockchain Solution for Tamper-Proof Logging Events”}. Este trabajo está alineado con nuestra línea de investigación ya que propone una solución sobre blockchain para lograr la integridad, la inmutabilidad y el no repudio de los sucesos de log. También indican la importancia de los logs en la seguridad de la información, como método de detección de incidentes, auditoría, análisis forense y en cumplimiento de normas; aunque igualmente reconocen cuán complicado es poder garantizar su integridad ante manipulaciones, sean internas o externas.
+
+La brillante propuesta de la investigación en cuestión consiste en llevar a cabo el registro en una blockchain de la forma de resguardo de los hashes de los eventos de log. Esto es, porque a la hora de implementar la blockchain, se está utilizando dicha propiedad como una manera más de asegurar el evento en un registro inmutable. Según el mecanismo de la red de blockchain que se esté utilizando, el evento puede guardarse directamente como metadato (aunque dependerá de la plataforma para que esto sea posible) o bien puede generarse el HMAC con el ID de la transacción y luego enlazarlo al evento accediendo al registro de un servidor de gestión de logs.
+
+Un evento log almacenado en la blockchain es incambiable e irrefutable, garantizando su propia inmutabilidad, ya que la blockchain incorpora la información de un modo escalonado y cronológico mejorando mucho la trazabilidad de los logs. Esta verificación se vuelve pública y transparente, lo que facilita las auditorías y evita que se niegue la existencia o el contenido de un log (el famoso no repudio), ya que su huella digital queda certificada con una marca de tiempo inalterable.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{EP5.}  El artículo científico elaborado por~\cite{Pourvahab2019Efficient}  titulado \textbf{“An Efficient Forensics Architecture in Software-Defined Networking-IoT Using Blockchain Technology”}. Este artículo nos presenta una arquitectura forense que, según su autor, resulta muy atractiva. Está articulada alrededor de entornos de redes definidas por software (SDN) y de dispositivos IoT, utilizando para ello la tecnología blockchain para proteger y asegurar la evidencia digital, como los logs de eventos y otros datos.
+
+Pese a que el objetivo principal de esta propuesta tiene su base en la informática forense, la idea que presenta es super útil para la gestión segura de logs en cualquier ámbito. Para proteger la integridad de los datos que son objeto de la explotación de los logs, los controladores SDN computan un hash de cada log y lo almacenan en la blockchain. Esto es clave ya que, una vez incorporados, el log no puede ser manipulado ni eliminado, es decir, han sido censados, ¡Y eso es como derecho! Podríamos decir que se les ha incorporado un candado digital que permite reforzar la Cadena de Custodia (CoC), al permitir preservarlos desde el momento que han sido recolectados hasta el que han sido analizados.
+
+En lo que se refiere a su autenticidad para garantizarlo el sistema hace uso de firmas homomórficas y claves únicas basadas, en las llamadas, curvas elípticas, algo que permite comprobar que los logs provienen de dispositivos y usuarios legítimos. Además, para acceder a estos logs hay que autenticarse lo que garantiza que solo las personas autorizadas pueden revisarlos. 
+
+La trazabilidad de los logs está garantizada gracias a la inmutabilidad propia de la tecnología blockchain. Esto permite almacenar registros de cualquier procedencia, incluyendo información como la hora, la dirección y la localización. Todo con la posibilidad de poder rastrear la proveniencia sin que el riesgo de la manipulación de los logs se interponga. Resumiendo, la propuesta aporta con su criterio la manera como la blockchain puede convertirse en un instrumento muy potente para garantizar la integridad, la autenticidad y la trazabilidad de los logs específicamente cuando son considerados como una evidencia forense.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Objetivos}
+\subsubsection{Objetivo General}
+Diseñar e implementar un sistema basado en blockchain para garantizar la integridad, trazabilidad y autenticidad de los logs de seguridad
+
+
+\subsubsection{Objetivos Específicos}
+\begin{itemize}
+    \item Analizar los métodos tradicionales de almacenamiento y gestión de logs de seguridad, identificando sus limitaciones en términos de integridad, trazabilidad y autenticidad.
+    \item Seleccionar y configurar una plataforma blockchain adecuada, para el almacenamiento inmutable de logs de seguridad.
+    \item Diseñar e implementar un mecanismo de recolección y envío de logs a la red blockchain.
+    \item  Desarrollar una interfaz que permita la consulta, validación y visualización de los logs almacenados en la blockchain.
+
+
+ 
+\end{itemize}
+%\begin{itemize}
+
+ 
+%\end{itemize}
+
+
+\subsection{Alcance}
+El presente trabajo aborda el diseño e implementación de un sistema basado en blockchain para la gestión segura de logs de seguridad, utilizando el framework Hyperledger Fabric. La propuesta incluye un análisis comparativo entre los métodos tradicionales de almacenamiento de logs y el uso de tecnología blockchain, así como la construcción de una red multicapa conformada por dos organizaciones: LogProvider y LogAuditor.
+
+Se desarrollan smart contracts para garantizar el registro inmutable de los logs y se integran mecanismos automáticos para la recolección y transferencia de datos desde los sistemas fuente. Además, se implementa una interfaz web que permite consultar, validar y visualizar los registros almacenados, asegurando la trazabilidad mediante funciones de auditoría.
+
+El sistema desarrollado demuestra la viabilidad técnica de blockchain para preservar la integridad, autenticidad y no repudio de los logs, ofreciendo una solución escalable y confiable para la gestión de evidencia digital en entornos empresariales.

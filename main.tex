@@ -1,0 +1,306 @@
+% Autor: Daniel Núñez-Agurto
+% 1ra versión: 28/10/2022
+% ültima actualización: 02/05/2023
+% @COPYLEFT
+
+
+%https://www.overleaf.com/latex/templates/template-and-sample-for-authoring-apa7-manuscripts/pvhtwcrvcmsp
+
+%+-+-+-+-++-+-+-+-+-+-+-+-+-++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-++-+-+-+-+-+-+-+-+-+
+% Preámbulo
+%\documentclass[stu, 11pt, letterpaper, donotrepeattitle, floatsintext, natbib]{apa7}
+
+\documentclass[letterpaper, 12pt, journal, oneside, onecolumn]{IEEEtran}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\usepackage{geometry}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{colortbl}
+\usepackage{float}
+\usepackage{makecell}
+\usepackage{tcolorbox}
+\usepackage{times}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz,xcolor,hyperref}
+\usepackage{pdflscape}
+\usepackage{comment}
+\usepackage{marvosym}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{pdfpages}
+\usepackage{caption}
+\usepackage[normalem]{ulem}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{upquote}
+\usepackage{fancyhdr}  % PAQUETE NECESARIO para controlar numeración de páginas
+\usepackage{comment}
+\usepackage{marvosym}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{pdfpages}
+%fuente
+%\usepackage{fontspec}
+%\setmainfont{Calibri}
+%\usepackage{caption}
+\usepackage[normalem]{ulem}
+\usepackage{multirow}
+\usepackage{url}
+%\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+%---titles
+\usepackage{titlesec}
+\usepackage{titletoc}
+
+\definecolor{FF6666}{HTML}{FF6666}
+\definecolor{FFCC66}{HTML}{FFCC66}
+\definecolor{FFEB99}{HTML}{FFEB99}
+\definecolor{FF9999}{HTML}{FF9999}
+\definecolor{FFFF99}{HTML}{FFFF99}
+\definecolor{CCFFCC}{HTML}{CCFFCC}
+
+
+
+
+\geometry{
+    left=2.5cm,
+    right=2.5cm,
+    top=2.5cm,
+    bottom=2.5cm
+}
+
+
+\addbibresource{bibliografia/referencias.bib}
+
+\renewcommand{\baselinestretch}{1.5}
+\parskip=6pt
+\setlength{\parindent}{0.5in}
+
+
+\captionsetup[figure]{justification=centering, singlelinecheck=false, font=footnotesize, format=plain, labelsep=period, name=Fig.}
+
+\captionsetup[table]{name=Tabla, labelfont=sc, labelsep=newline, justification=centering, font=footnotesize, singlelinecheck=false, format=plain, skip=1ex}
+%\captionsetup[table]{name=Tabla, labelsep=period, justification=centering, font=footnotesize, singlelinecheck=false, format=plain, skip=1ex}
+
+\renewcommand{\textspanish}{}
+
+
+\titleformat{\chapter}[block]
+{\large\filcenter}
+{\thechapter.}
+{5pt}
+{\MakeUppercase}
+{}
+\titlespacing{\chapter}{0pt}{0pt}{*3}
+\titlecontents{chapter}
+[0pt]                                               
+{}
+{\contentsmargin{0pt}\thecontentslabel.\enspace\uppercase}
+{\contentsmargin{0pt}\uppercase}                        
+{\titlerule*[.7pc]{.}\contentspage}  
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+\DeclareNameAlias{sortname}{family-given}
+
+%-----------------------------------------------------------------------------------------
+
+
+% ========================================
+% CONFIGURACIÓN DE NUMERACIÓN DE PÁGINAS
+% ========================================
+
+% OPCIÓN 1: NUMERACIÓN EN ESQUINA SUPERIOR DERECHA (ACTUAL)
+\setlength{\headheight}{14.5pt} % Altura del área del encabezado
+\pagestyle{fancy}               % Activa el estilo de página personalizado
+\fancyhf{}                     % Limpia todos los encabezados y pies de página
+\fancyhead[R]{\thepage}        % ← LÍNEA PRINCIPAL: Número en esquina superior derecha
+\renewcommand{\headrulewidth}{0pt} % Sin línea horizontal en el encabezado
+
+% Configuración para páginas especiales (inicio de secciones, capítulos)
+\fancypagestyle{plain}{
+    \fancyhf{}                 % Limpia encabezados y pies
+    \fancyhead[R]{\thepage}    % ← LÍNEA SECUNDARIA: Número en esquina superior derecha para páginas especiales
+    \renewcommand{\headrulewidth}{0pt} % Sin línea horizontal
+}
+% ========================================
+% OPCIÓN 2: NUMERACIÓN EN PARTE INFERIOR CENTRAL (CÓDIGO ALTERNATIVO)
+% ========================================
+% Para cambiar a numeración en la parte inferior central, 
+% COMENTA las líneas de arriba y DESCOMENTA las líneas de abajo:
+
+%\setlength{\headheight}{14.5pt} % Mantener altura del encabezado
+%\pagestyle{fancy}               % Activa el estilo personalizado
+%\fancyhf{}                     % Limpia todos los encabezados y pies
+%\fancyfoot[C]{\thepage}        % ← NÚMERO EN PARTE INFERIOR CENTRAL
+%\renewcommand{\headrulewidth}{0pt}  % Sin línea en encabezado
+%\renewcommand{\footrulewidth}{0pt}  % Sin línea en pie de página
+
+% % Configuración para páginas especiales con numeración inferior central
+%\fancypagestyle{plain}{
+%     \fancyhf{}                 % Limpia encabezados y pies
+%     \fancyfoot[C]{\thepage}    % ← NÚMERO EN PARTE INFERIOR CENTRAL para páginas especiales
+%     \renewcommand{\headrulewidth}{0pt} % Sin línea en encabezado
+%     \renewcommand{\footrulewidth}{0pt} % Sin línea en pie de página
+%}
+
+% ========================================
+% OTRAS OPCIONES DE POSICIÓN (EJEMPLOS):
+% ========================================
+% \fancyhead[L]{\thepage}  % Superior izquierda
+% \fancyhead[C]{\thepage}  % Superior centro
+% \fancyhead[R]{\thepage}  % Superior derecha (actual)
+% \fancyfoot[L]{\thepage}  % Inferior izquierda
+% \fancyfoot[C]{\thepage}  % Inferior centro
+% \fancyfoot[R]{\thepage}  % Inferior derecha
+
+\begin{document}
+% Configuración de numeración desde el inicio
+
+
+%Se reemplaza Tabla Nro. por Lugar de Cuadro Nro.
+\renewcommand{\tablename}{Tabla}
+
+% Portada de la tesis (página 1)
+\input{preliminares/01_portada.tex}
+\thispagestyle{empty}
+\newpage
+
+% Reporte de verificación de plagio del software antiplagio 
+%\phantomsection
+%\addcontentsline{toc}{section}{Reporte de Verificación de Plagio}
+
+%\thispagestyle{fancy}
+\begin{center}
+\textbf{Reporte de verificación de contenido}
+\end{center}
+\includegraphics[width=\textwidth,height=0.9\textheight,keepaspectratio]{figuras/RF_ReportePlagio.pdf}
+\thispagestyle{empty}
+\newpage
+
+% Certificación de trabajo de titulación (Firma tutor/ Director de tesis)
+%\phantomsection
+%\addcontentsline{toc}{section}{Certificación}
+\includepdf[pages=1,fitpaper=true,pagecommand={\thispagestyle{empty}}]{figuras/RF_CertificadoDirectorTesis.pdf}
+\newpage
+
+% Responsabilidad de autoria firmada por el tesista
+%\phantomsection
+%\addcontentsline{toc}{section}{Responsabilidad de Autoría}
+\includepdf[pages=1,fitpaper=true,pagecommand={\thispagestyle{empty}}]{figuras/RF_ResponsabilidadAutoria.pdf}
+\newpage
+
+% Autorización de publicación firmada por el tesista
+%\phantomsection
+%\addcontentsline{toc}{section}{Autorización de Publicación}
+\includepdf[pages=1,fitpaper=true,pagecommand={\thispagestyle{empty}}]{figuras/RF_AutorizacionPublicacion.pdf}
+\newpage
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+% Dedicatoria 
+\phantomsection
+\addcontentsline{toc}{section}{Dedicatoria}
+\renewcommand{\thesection}{\Roman{section}}
+\section*{\normalsize \centering{Dedicatoria}}
+\input{preliminares/06_1_dedicatoria.tex}
+\newpage
+
+% Agradecimientos 
+\phantomsection
+\addcontentsline{toc}{section}{Agradecimiento}
+\section*{\normalsize \centering{Agradecimiento}}
+\input{preliminares/07_1_agradecimiento.tex}
+\newpage
+
+\pagestyle{empty}
+% Índices
+% Contenido
+\renewcommand\contentsname{\normalsize ÍNDICE}
+\tableofcontents
+\setcounter{tocdepth}{2}
+\newpage
+
+% Tablas
+\renewcommand{\listtablename}{\normalsize ÍNDICE DE TABLAS}
+\listoftables
+\newpage
+
+% Figuras
+\renewcommand{\listfigurename}{\normalsize ÍNDICE DE FIGURAS}
+\listoffigures
+\newpage
+
+\pagestyle{fancy}
+% Resumen de la tesis en español
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\phantomsection
+\addcontentsline{toc}{section}{Resumen}
+\addcontentsline{toc}{section}{Palabras clave}
+\section*{Resumen}
+\input{capitulos/resumen.tex}
+\newpage
+
+% Resumen de la tesis en inglés
+\phantomsection
+\addcontentsline{toc}{section}{Abstract}
+\addcontentsline{toc}{section}{Keywords}
+\section*{Abstract}
+\input{capitulos/abstract.tex}
+\newpage
+
+% Capitulos
+\section{Introducción y estado del arte}
+\input{capitulos/capitulo1.tex}
+\newpage
+
+\section{Marco teórico}
+\input{capitulos/capitulo2.tex}
+\newpage
+
+\section{Metodología}
+\input{capitulos/capitulo3.tex}
+\newpage
+
+\section{Resultados}
+\input{capitulos/capitulo4.tex}
+\newpage
+
+\section{Conclusiones y recomendaciones}
+\input{capitulos/capitulo5.tex}
+\newpage
+
+% Referencias
+\section{Referencias Bibliográficas}
+\renewcommand\refname{}
+\printbibliography
+\newpage
+
+% Anexos
+%\input{capitulos/anexos}
+
+\end{document}

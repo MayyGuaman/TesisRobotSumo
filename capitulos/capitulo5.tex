@@ -1,0 +1,37 @@
+
+
+\subsection{Conclusiones}
+
+Se desarrolló exitosamente un sistema basado en blockchain que garantiza la integridad, trazabilidad y autenticidad de logs de seguridad, cumpliendo con el objetivo planteado. La solución integra tecnologías emergentes como Hyperledger Fabric, criptografía avanzada y arquitectura distribuida, proporcionando un modelo escalable y replicable para infraestructuras críticas donde la inmutabilidad de los registros es fundamental.
+
+El análisis realizado sobre los métodos convencionales de almacenamiento y gestión de logs de seguridad permitió evidenciar limitaciones significativas en cuanto a la integridad, trazabilidad y autenticidad de los registros. Estos enfoques, al basarse en infraestructuras centralizadas y carentes de mecanismos robustos de verificación, resultan vulnerables a manipulaciones y eliminaciones no autorizadas, comprometiendo así la confiabilidad del sistema ante auditorías o análisis forenses.
+
+La implementación de una red blockchain permisionada con Hyperledger Fabric 2.5 demostró ser una solución técnica viable para garantizar la inmutabilidad y la seguridad de los logs. La configuración de una arquitectura multi-organización, el uso del consenso etcdraft, certificados digitales X.509, canales privados y cifrado TLS en todos los componentes, permitió establecer un entorno distribuido, confiable y resistente a alteraciones maliciosas, alineado con los principios de una gestión segura de registros.
+
+El mecanismo de recolección de logs en tiempo real, implementado mediante servidor rsyslog, logró capturar y procesar logs según el estándar RFC3164. Este componente aplicó filtros inteligentes basados en severidad, programas críticos y palabras clave de seguridad, y evitó duplicaciones mediante el uso de hash MD5.  La implementación de firmas digitales SHA-256 garantizó la integridad de cada registro antes de su inserción en la blockchain.
+
+El smart contract denominado \textit{security-logs}, desarrollado en Node.js, permitió gestionar de forma segura las operaciones de almacenamiento, consulta y eliminación de registros. 
+
+El smart contract "security-logs" desarrollado en Node.js demostró un rendimiento óptimo en las operaciones CRUD. El uso de estructuras JSON serializadas y el manejo de errores robusto garantizaron la consistencia de los datos. La API REST en Express.js facilitó la interacción con el sistema y su integración con aplicaciones externas.
+
+La interfaz expuesta a través de la API REST ofreció una herramienta eficaz para consultar, validar y visualizar los logs almacenados en la blockchain. Esto permitió garantizar el acceso a registros íntegros, no repudiables y completamente trazables, fortaleciendo las capacidades de auditoría y supervisión de los entornos donde fue desplegado el sistema.
+
+
+\subsection{Recomendaciones}
+
+La incorporación de scripts shell especializados en el despliegue de la red blockchain permite garantizar la consistencia del entorno, minimizar errores humanos y facilitar tareas de mantenimiento y auditoría. Estos scripts deben diseñarse siguiendo una estructura modular basada en responsabilidades únicas, lo que permite una gestión clara de cada fase del proceso: creación de canales, incorporación de nodos y despliegue de smart contracts.
+
+El correcto funcionamiento de una red basada en Hyperledger Fabric depende de una secuencia precisa y validada en la inicialización de sus contenedores. La infraestructura debe levantarse en fases claramente definidas y con verificaciones de estado: primero las bases de datos CouchDB con confirmación de conectividad, seguidas por las autoridades de certificación con generación exitosa de certificados X.509, luego el nodo ordenante (orderer) con configuración del algoritmo de consenso, posteriormente los nodos peer con sincronización del ledger, y finalmente las herramientas administrativas como el CLI.
+
+Para garantizar la sostenibilidad a largo plazo del sistema, es importante implementar una estrategia integral de escalabilidad que considere el crecimiento esperado del volumen de logs y la expansión de la infraestructura monitoreada. Esto incluye la configuración de métricas de rendimiento en tiempo real, establecimiento de umbrales de alerta para transacciones por segundo, utilización de recursos y latencia de consenso.
+
+
+\subsection{Trabajos futuros}
+
+La evolución inmediata del sistema contempla la expansión de sus capacidades analíticas mediante el desarrollo de un dashboard web avanzado que incorpore técnicas de visualización de datos de última generación. Se proyecta una interfaz intuitiva basada en principios de diseño centrado en el usuario que permita a auditores y administradores de seguridad realizar consultas complejas sin requerir conocimientos especializados en blockchain.
+
+Como estrategia de mediano plazo, se contempla la implementación de una arquitectura multi-nodo geográficamente distribuida que incorpore nodos de diferentes organizaciones bajo un modelo de consorcio. Esta expansión no solo incrementará la disponibilidad y tolerancia a fallos del sistema, sino que permitirá la validación cruzada de logs entre entidades colaboradoras, fortaleciendo la confianza y la integridad de los registros.
+
+Un desarrollo del sistema involucra su integración con plataformas SIEM existentes, sistemas de threat intelligence y frameworks de respuesta a incidentes. Se prevé el desarrollo de conectores estandarizados que permitan la interoperabilidad con soluciones como Splunk, IBM QRadar, y herramientas de código abierto como ELK Stack, facilitando la adopción gradual sin reemplazar completamente las infraestructuras actuales.
+
+Finalmente, se considera la posibilidad de implementar un enfoque multi-cadena, en el que distintos tipos de registros se almacenen en canales o cadenas independientes, aplicando políticas diferenciadas de acceso y control. Esta segmentación optimiza la escalabilidad del sistema y refuerza la confidencialidad de los datos almacenados.
